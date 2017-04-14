@@ -14,30 +14,43 @@ function draw() {
 
 function whiteLine() {
     lineHeight = map(mouseY, height, 0, 1.8, 2.0);
-
+    stroke(255);
     translate(0, 0);
-    line(0, height / lineHeight, width / 2, height / 2.4);
+    line(0, height / lineHeight, (width /2)-(height/9), height / 2.4);
 }
 
 function rainbow() {
     colorMode(HSB);
-    strokeWeight(9);
+    noStroke();
     var rainbowColor = 0;
-    var gap = -8;
+    var gap = -24;
     for (i = 0; i < 6; i++) {
-        stroke(rainbowColor, 255, 255);
-
-        line(width / 2, (height / 2.4), width, (height / lineHeight) + gap);
-        gap += 8;
+        fill(rainbowColor, 255, 255);
+        push();
+        beginShape();
+        vertex((width /2)+(height/9), height/2.4);
+        vertex(width, (height/lineHeight)+gap);
+        vertex(width, (height/lineHeight)+gap+12);
+        endShape(CLOSE);
+        pop();
+        //line(width / 2, (height / 2.4), width, (height / lineHeight) + gap);
+        gap += 11;
         rainbowColor += (255 / 4);
     }
-
 }
 
 function t(size) {
+    push();
+    colorMode(RGB);
     translate(width / 2, height / 2);
-    stroke(255);
-    strokeWeight(2);
+    var s = 255;
     fill(0);
-    triangle(0, -size, size, size, -size, size);
+    strokeWeight(3);
+    for (i=0; i < 4; i++) {
+      stroke(s);
+      triangle(0, -size, size, size, -size, size);
+      size -= 3;
+      s -= 80;
+    }
+    pop();
 }
