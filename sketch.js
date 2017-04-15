@@ -15,6 +15,7 @@ function draw() {
 function whiteLine() {
     lineHeight = map(mouseY, height, 0, 1.8, 2.0);
     stroke(255);
+    strokeWeight(4);
     translate(0, 0);
     line(0, height / lineHeight, (width /2)-(height/9), height / 2.4);
 }
@@ -24,17 +25,20 @@ function rainbow() {
     noStroke();
     var rainbowColor = 0;
     var gap = -24;
+    var gap2 = -6;
     for (i = 0; i < 6; i++) {
         fill(rainbowColor, 255, 255);
         push();
         beginShape();
-        vertex((width /2)+(height/9), height/2.4);
+        vertex((width /2)+(height/10), height/2.4+gap2+6);
+        vertex((width /2)+(height/10), height/2.4+gap2);
         vertex(width, (height/lineHeight)+gap);
         vertex(width, (height/lineHeight)+gap+12);
         endShape(CLOSE);
         pop();
         //line(width / 2, (height / 2.4), width, (height / lineHeight) + gap);
         gap += 11;
+        gap2 += 3;
         rainbowColor += (255 / 4);
     }
 }
