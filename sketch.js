@@ -10,6 +10,7 @@ function draw() {
     whiteLine();
     rainbow();
     t(height / 3.3);
+    tmiddle();
 }
 
 function whiteLine() {
@@ -18,6 +19,18 @@ function whiteLine() {
     strokeWeight(4);
     translate(0, 0);
     line(0, height / lineHeight, (width /2)-(height/9), height / 2.4);
+}
+
+function tmiddle() {
+    noStroke();
+    colorMode(RGB);
+    fill(255,60);
+    beginShape();
+      vertex((width /2)-(height/9), height / 2.4+2);
+      vertex((width /2)-(height/9), height / 2.4-2);
+      vertex((width /2)+(height/9.5), height/2.4-6);
+      vertex((width /2)+(height/7.9), height/2.4+18);
+    endShape(CLOSE);
 }
 
 function rainbow() {
